@@ -9,6 +9,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Extract tag
+        id: extract_tag
+        run: echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -40,6 +43,6 @@ jobs:
           push: true
           tags: |
             raphaeljoie/python-lambda-builder:latest
-            raphaeljoie/python-lambda-builder:${{ github.ref }}
+            raphaeljoie/python-lambda-builder:${{ steps.extract_tag.outputs.TAG }}
             ghcr.io/user/python-lambda-builder:latest
-            ghcr.io/user/python-lambda-builder:${{ github.ref }}
+            ghcr.io/user/python-lambda-builder:${{ steps.extract_tag.outputs.TAG }}
