@@ -1,3 +1,7 @@
+# sources:
+# - https://github.com/docker/build-push-action/blob/master/docs/advanced/push-multi-registries.md
+# - https://github.community/t/how-to-get-just-the-tag-name/16241/6
+
 name: ci
 
 on:
